@@ -25,13 +25,14 @@ public class AuthResource {
     public RestResponse<LoginResponse> refresh(@HeaderParam("Authorization") String refreshToken) {
         String token = refreshToken.replace("Bearer ", "");
 
-        JwtClaims claims = Jwt.verify(token);
-
-        Long uid = claims.getClaimValue("uid", Long.class);
-        String email = claims.getSubject();
-        var user = new User(uid, email);
-        String newAccess = tokenService.generateAccessToken(user);
-
-        return Response.ok(Map.of("access_token", newAccess)).build();
+//        JwtClaims claims = Jwt.verify(token);
+//
+//        Long uid = claims.getClaimValue("uid", Long.class);
+//        String email = claims.getSubject();
+//        var user = new User(uid, email);
+//        String newAccess = tokenService.generateAccessToken(user);
+//
+//        return Response.ok(Map.of("access_token", newAccess)).build();
+        return RestResponse.ok();
     }
 }
